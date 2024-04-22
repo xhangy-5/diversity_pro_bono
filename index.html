@@ -1,7 +1,7 @@
 <html>
     <head>
         <style>
-            h1 {font-family: "Arial"; font-size: 40px;}
+            h1 {font-family: "Arial"; font-size: 48px;}
             h2 {font-family: "Arial";}
             h3 {font-family: "Arial";}
             h4 {font-family: "Arial";}
@@ -28,135 +28,333 @@
         </style>
     </head>
     <body style="background-color: #f5f5f5;">
-        <h1><strong>Dashboard Indicators</strong></h1>
+        <h2>Analysis of bibliometric data</h2>
+        <h3>Data sources</h3>
+        <p>data as of August 1, 2023 were used for the preparation of bibliometric indicators related to publication outputs. Analyses were limited to peer-reviewed content under three publication types: articles, reviews and conference papers. Bibliometric indicators presented in this report, such as average of publications and average field-weighted citation impact (FWCI), were based on these publication types.</p>
+        <p>Scopus is a comprehensive, source-neutral abstract and citation database curated by independent subject matter experts who are recognized leaders in their fields. 91+ million items include data from 7,000+ publishers, 94,000+ affiliation profiles and 17+ million authors. Scopus puts powerful discovery and analytics tools in the hands of researchers, librarians, research managers and funders to promote ideas, people and institutions. Delivering a comprehensive overview of the world&rsquo;s research output in the fields of science, technology, medicine, social sciences, and arts and humanities, our state-of-the-art search tools and filters help uncover relevant information, monitor research trends, track newly published research and identify subject experts. Worldwide, Scopus is used by more than 3,000 academic, government and corporate institutions and is the main data source that supports the Elsevier Research Intelligence portfolio.&nbsp;</p>
+        <h3>Author definition and disambiguation (Scopus author profiles)</h3>
+        <p class="AppendixText"><span lang="EN-US">Data analyses were based on authors as listed in the author byline of publications. Scopus uses a sophisticated author-matching algorithm to precisely identify publications by the same author. The Scopus Author Identifier assigns each author a unique ID (called the author ID) and groups together all documents published by that author into a Scopus Author Profile, matching alternate spellings and variations or the author&rsquo;s last name and distinguishing between authors with the same last name by differentiating on data elements associated with the publication (such as affiliation, subject area and co-authors). The profile is enriched with manual, author-supplied feedback, both directly through Scopus and via Scopus&rsquo;s direct links with ORCID (Open Researcher &amp; Contributor ID; https://orcid.org/). Gender is not captured in Scopus Author Profiles.</span></p>
+        <h3 class="Subhead1"><span lang="EN-US">Authors included in the analysis</span></h3>
+        <p class="AppendixText"><span lang="EN-US">Authors included in the analysis were limited to those authors for whom a first name could be determined (based on name data from the <strong>August 1</strong>, <strong>2023</strong> snapshot of Scopus, as described in the section &ldquo;First name determination&rdquo; below) and a gender could be predicted based on the latest version of the NamSor API (i.e., surpassing a<strong> calibrated probability</strong> of <strong>0.85</strong>; described in the section &ldquo;Gender Probability Score&rdquo;).</span></p>
+        <h3 class="Subhead1"><span lang="EN-US">Identification of active authors</span></h3>
+        <p class="AppendixText"><span lang="EN-US">To report on populations of authors on scientific publications, we relied on Scopus author identifiers (AUID) to identify individuals whom we deem relevant to the analysis. Multiple approaches to identifying the researcher population could have been implemented, all with their pros and cons. For this project, we wanted to focus on active researchers, as defined by individuals actively publishing scientific peer-reviewed content. Therefore, to avoid diluting the signal with individuals only publishing sporadically, a threshold of two publications over a 5-year period was set for inclusion. Therefore, any individuals linked to at least two publications for a specific period was reported as active for that period (and that period only).</span></p>
+        <h3 class="Subhead1"><span lang="EN-US">Author country and subject areas assignation</span></h3>
+        <p class="AppendixText"><span lang="EN-US">We assigned authors to countries and subject areas based on their publication output during the period of interest. Whole counting methods were used for this process. Authors were assigned to a country if more than 30% of their publications during the 5-year period of interest were from that country. Authors assigned to any of the EU-27 countries were also assigned to the category EU-27. Similarly, an author was assigned to a subject area if more than 30% of their publications during the 5-year period of interest were in that subject area. If an author did not meet these thresholds for any country or any subject area, they were not assigned to one specifically, but were still accounted for in the aggregated analysis across all subject areas and/or at the world level.</span></p>
+        <h3 class="Subhead1"><span lang="EN-US">Selection of countries to include in the analysis</span></h3>
+        <p class="AppendixText"><span lang="EN-US">The selection of countries for presentation in this report was made to ensure representativity on a global scale, while being mindful of limitations related to presentation, but also minimum levels of data to ensure robust analyses. Countries selected all had at least 4,000 active authors per period (enumerated based on the description in the section &ldquo;Authors included in the analysis&rdquo;). The prediction of gender based on name was dependent on two factors: the author ID having a first name (as described in the section &ldquo;First name determination&rdquo;) and the Gender Calibrated Probability assigned to the author name by NamSor. We therefore included an additional threshold to ensure that the prediction of gender based on name was similar across countries included in the report: countries included in the report were limited to those for which a gender could be inferred for at least 85% of author IDs.</span></p>
+        <h3 class="Subhead1"><span lang="EN-US">Subject areas and subfields included in the analysis</span></h3>
+        <p class="AppendixText"><span lang="EN-US">Titles in Scopus are classified under four broad subject clusters (life sciences, physical sciences, health sciences and social sciences &amp; humanities), which are further divided into 27 major subject areas (known as All Science Journal Classification or ASJC). Titles may belong to more than one subject area. Subject areas in this report are based on 26 subject areas and the four broad clusters, with titles classified as &ldquo;Multidisciplinary&rdquo; reclassified to the other ASJC subject areas for this report.</span></p>
+        <table width="80%">
+        <tbody>
+        <tr>
+        <td width="51%">
+        <p><strong>Scopus ASJC Major Subject Areas</strong></p>
+        </td>
+        <td width="24%">
+        <p><strong>Broad Cluster</strong></p>
+        </td>
+        <td width="24%">
+        <p><strong>STEM</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Agriculture and Biological Sciences</strong></p>
+        </td>
+        <td width="24%">
+        <p>Life Sciences</p>
+        </td>
+        <td width="24%">
+        <p style="text-align: center;"><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Arts and Humanities</strong></p>
+        </td>
+        <td width="24%">
+        <p>Social Sciences</p>
+        </td>
+        <td width="24%">
         <p>&nbsp;</p>
-        <h2>Inter &amp; Multidisciplinary research indicators</h2>
-        <p>Interdisciplinary research combines knowledge or methods from two or more academic disciplines into one activity (e.g., a research project). Interdisciplinary research is becoming increasingly important as many of the most pressing problems facing society today require solutions that draw on knowledge from multiple disciplines.<a href="#_ftn1" name="_ftnref1">[1]</a> To measure interdisciplinarity and multidisciplinarity, we use as proxies the disciplinary diversity of authors (DDA) and disciplinary diversity of references (DDR).</p>
-        <ul>
-        <li><strong>Share of highly interdisciplinary publications: </strong>This measures the extent to which research publications cite sources from different disciplines, to reflect the diversity of knowledge that is being integrated into the publication (disciplinary diversity of references &ndash; DDR). It is computed based on the material cited by the publication. The indicator considers (a) the number of different subfields that are being cited, (b) the distribution of those citations across the cited subfields, and (c) the intellectual proximity of those subfields to one another. Share of highly interdisciplinary publications refers to the share of an entity&rsquo;s papers among the top 10% with the highest DDR in the world.</li>
-        </ul>
-        <blockquote>
-        <p>Examples of public reports and publications for this indicator:</p>
-        <ul>
-        <li>2022: <a href="https://direct.mit.edu/qss/article/3/2/363/111199/Do-women-undertake-interdisciplinary-research-more" target="_blank">Do women undertake interdisciplinary research more than men, and do self-citations bias observed differences? | Quantitative Science Studies </a><a href="https://direct.mit.edu/qss/article/3/2/363/111199/Do-women-undertake-interdisciplinary-research-more"target="_blank">(MIT.edu)</a></li>
-        <li>2021: <a href="https://www.belmontforum.org/wp-content/uploads/2021/03/Belmont-Forum-Evaluation-Report.pdf" target="_blank">Evaluation of the Belmont Forum (belmontforum.org)</a></li>
-        </ul>
-        </blockquote>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Biochemistry, Genetics and Molecular Biology</strong></p>
+        </td>
+        <td width="24%">
+        <p>Life Sciences</p>
+        </td>
+        <td width="24%">
+        <p style="text-align: center;"><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Business, Management and Accounting</strong></p>
+        </td>
+        <td width="24%">
+        <p>Social Sciences</p>
+        </td>
+        <td width="24%">
         <p>&nbsp;</p>
-        <ul>
-        <li><strong>Share of highly multidisciplinary publications: </strong>This measures the extent to which authors from different disciplines collaborate on research projects. It reflects the diversity of the prior disciplinary backgrounds of a paper&rsquo;s co-authors and is calculated to account for the number of distinct disciplines, the cognitive distance that separates them, and the balance between them. A paper co-authored by authors whose previous papers were distributed across subfields of science in a similar pattern would score lower than papers bringing together authors with different backgrounds even if those authors, individually, have published in a less diverse set of subfields. Share of highly multidisciplinary (with high disciplinary diversity of authors - DDA) publications refers to the share of an entity&rsquo;s papers among the top 10% with the highest DDA in the world.</li>
-        </ul>
-        <blockquote>
-        <p>Examples of public reports and publications for this indicator:</p>
-        <ul>
-        <li>2022: <a href="https://direct.mit.edu/qss/article/3/2/363/111199/Do-women-undertake-interdisciplinary-research-more" target="_blank">Do women undertake interdisciplinary research more than men, and do self-citations bias observed differences? | Quantitative Science Studies </a><a href="https://direct.mit.edu/qss/article/3/2/363/111199/Do-women-undertake-interdisciplinary-research-more"target="_blank">(</a><a href="https://direct.mit.edu/qss/article/3/2/363/111199/Do-women-undertake-interdisciplinary-research-more" target="_blank">edu)</a></li>
-        <li>2021: <a href="https://www.belmontforum.org/wp-content/uploads/2021/03/Belmont-Forum-Evaluation-Report.pdf" target="_blank">Evaluation of the Belmont Forum (belmontforum.org)</a></li>
-        </ul>
-        </blockquote>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Chemical Engineering</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td width="24%">
+        <p style="text-align: center;"><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Chemistry</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td width="24%">
+        <p style="text-align: center;"><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Computer Science</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td width="24%">
+        <p style="text-align: center;"><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Decision Sciences</strong></p>
+        </td>
+        <td width="24%">
+        <p>Social Sciences</p>
+        </td>
+        <td width="24%">
         <p>&nbsp;</p>
-        <h2><strong>Open Access</strong> indicators</h2>
-        <p><strong>Share of publications available in open access</strong> is the percentage of research outputs that are available online, free of access charges or other barriers. Open access can be applied to all forms of published research output, including peer-reviewed journal articles and conference papers. It is computed for OA overall as well as by type of open access, using data from Unpaywall.</p>
-        <p>There are different models of open access (OA) publishing:</p>
-        <ul>
-        <li>In <strong>Hybrid</strong> and <strong>Gold</strong> OA, the publisher makes all articles and related content freely available to read at the time of publication, usually funded by author-paid article processing charges. </li>
-        <li><strong>Green</strong> OA articles are available in an OA repository, independently from publication by a publisher.&nbsp;<em>Note that Green OA may be affected by the &ldquo;embargo effect&rdquo; because many journal publishers do not allow authors to post their publication in an OA repository until a certain amount of time has gone by. This effect usually exerts its strongest influence on the two most recent publication years.</em></li>
-        <li><strong>Bronze </strong>OA refers to articles that are freely available but do not have a clearly identifiable license.</li>
-        </ul>
-        <blockquote>
-        <p>OA color for this indicator is defined according to the best OA location where a document is retrieved. For more details about how OA colors are defined, please refer to the <a href="https://support.unpaywall.org/support/solutions/articles/44001777288-what-do-the-types-of-oa-status-green-gold-hybrid-and-bronze-mean-" target="_blank">Unpaywall definitions</a>.</p>
-        </blockquote>
-        <p>Examples of public reports where this indicator has been used:</p>
-        <ul>
-        <li>2022: <a href="https://wellcome.org/reports/investigating-effects-open-sharing-commitments" target="_blank">Investigating the effects of open sharing commitments | Reports (Wellcome.org)</a>, and <a href="https://science-metrix.com/assessing-the-evolution-of-open-science-practices/" target="_blank">Assessing the evolution of open science practices: the Wellcome Joint Statement on COVID-19 (Science-Metrix.com)</a></li>
-        <li>2020: <a href="https://www.elsevier.com/connect/transition-to-open-access-creates-a-challenge-for-global-south" target="_blank">Achieving an equitable transition to open access for researchers in lower and middle-income countries (Elsevier.com)</a></li>
-        </ul>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Dentistry</strong></p>
+        </td>
+        <td width="24%">
+        <p>Health Sciences</p>
+        </td>
+        <td width="24%">
         <p>&nbsp;</p>
-        <h2><strong>Research Impact </strong>Indicators</h2>
-        <ul>
-        <li><a name="_Toc140150663"></a> <strong>Field-weighted citation impact (FWCI)</strong> is a measure of citation impact that normalizes the citations received by an article against the world benchmark of citations received in the same field, publication type, and year of publication. The World FWCI is indexed to a value of 1.0, meaning that values above 1.0 indicate above average citation impact. For example, a value of 1.7 indicates a citation impact that is 1.7 times the average or 70% above average.</li>
-        </ul>
-        <blockquote>
-        <p>Examples of public reports and publications where this indicator has been used or described:</p>
-        <ul>
-        <li>2023: <a href="https://assets.ctfassets.net/zlnfaxb2lcqx/epSolmRHzr28rzUnxCl0a/04aa577cf83c02be0f9b814c7a53bfd0/G20-report-June-2023version-19th-July.pdf" target="_blank">G20-report-June-2023.pdf (elsevier.com) Fostering collaboration: a study of scientific publications with authors in G20 countries</a></li>
-        <li>Updated 2022: <a href="https://service.elsevier.com/app/answers/detail/a_id/14894/kw/FWCI/supporthub/scopus/" target="_blank">What is Field-weighted Citation Impact (FWCI)? (elsevier.com)</a></li>
-        </ul>
-        </blockquote>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Earth and Planetary Sciences</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td width="24%">
+        <p style="text-align: center;"><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Economics, Econometrics and Finance</strong></p>
+        </td>
+        <td width="24%">
+        <p>Social Sciences</p>
+        </td>
+        <td width="24%">
         <p>&nbsp;</p>
-        <ul>
-        <li><strong>Normalized share of publications cited by patents </strong>informs on the relative uptake of scientific research into innovation. It reflects the number of scientific publications cited by a patent proportional to the total number of scientific publications, normalized against expectations for other publications of the same publication year and subfield. It is measured by linking records in Scopus to the patent literature. Patent applications filed at the USPTO, the European Patent Office (EPO) and the and through the World Intellectual Property Organization (WIPO) are considered.</li>
-        </ul>
-        <blockquote>
-        <p>The patent literature integrates the scientific literature at a very slow pace, particularly because it can take many years to develop and patent inventions. While we control for this with normalization, results for the most recent years are more prone to fluctuations, so caution is advised when examining these data.</p>
-        </blockquote>
-        <blockquote>
-        <p>Examples of public reports and publications for this indicator:</p>
-        <ul>
-        <li>2022: <a href="https://www.elsevier.com/about/strategic-partners/aggregation-induced-emission-research-trends-and-impact" target="_blank">Research trends and impact report on the field of Aggregation Induced Emission AIE (elsevier.com)</a></li>
-        </ul>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Energy</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td width="24%">
+        <p style="text-align: center;"><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Engineering</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td width="24%">
+        <p style="text-align: center;"><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Environmental Science</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td width="24%">
+        <p style="text-align: center;"><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Health Professions</strong></p>
+        </td>
+        <td width="24%">
+        <p>Health Sciences</p>
+        </td>
+        <td width="24%">
         <p>&nbsp;</p>
-        </blockquote>
-        <ul>
-        <li><strong>Normalized share of publications cited by policy documents </strong> informs on the uptake of scientific discovery by policymakers, governmental bodies and agencies. This is the number of scientific publications cited by a policy-related document proportional to the total number of scientific publications, normalized against expectations for other publications of the same year and subfield. It is measured by linking records in Scopus to the policy document literature. The data source of policy documents is <a href="https://www.overton.io/data-collaborations/" target="_blank">Overton</a>, which is the world&rsquo;s largest searchable index of policy documents, guidelines, think-tank publications and working papers.</li>
-        </ul>
-        <blockquote>
-        <p>Like patent literature, the policy literature integrates scientific knowledge at a slow pace, and it can take many years for citations to accrue. While we control for this with normalization, results for the most recent years are more prone to fluctuations, so caution is advised when examining these data.</p>
-        <p>Examples of public reports and publications for this indicator:</p>
-        <ul>
-        <li>2022: <a href="https://www.ucl.ac.uk/steapp/sites/steapp/files/working_paper_series_-_7_-_final.pdf" target="_blank">Tracking the impact of research on education policy during the COVID-19 pandemic (ucl.ac.uk)</a></li>
-        <li>2022: <a href="https://direct.mit.edu/qss/article/3/3/624/112760/Overton-A-bibliometric-database-of-policy-document" target="_blank">Overton-A-bibliometric-database-of-policy-document (mit.edu)</a></li>
-        <li>2022: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0274693" target="_blank">How relevant is climate change research for climate change policy? An empirical analysis based on Overton data (</a><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0274693" target="_blank">j</a><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0274693" target="_blank">plos.org)</a></li>
-        <li>2021: <a href="https://www.belmontforum.org/wp-content/uploads/2021/03/Belmont-Forum-Evaluation-Report.pdf" target="_blank">Evaluation of the Belmont Forum (belmontforum.org)</a></li>
-        </ul>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Immunology and Microbiology</strong></p>
+        </td>
+        <td width="24%">
+        <p>Life Sciences</p>
+        </td>
+        <td style="text-align: center;" width="24%">
+        <p><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Materials Sciences</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td style="text-align: center;" width="24%">
+        <p><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Mathematics</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td style="text-align: center;" width="24%">
+        <p><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Medicine</strong></p>
+        </td>
+        <td width="24%">
+        <p>Health Sciences</p>
+        </td>
+        <td width="24%">
         <p>&nbsp;</p>
-        </blockquote>
-        <ul>
-        <li><strong>Alternative metrics </strong>assess the uptake of scientific literature by popular culture, such as news and online content. They are normalized against expectations for publications of the same year and subfield. Altmetrics are measured by linking records in Scopus to PlumX, the data source of journalistic and trade news documents, Wikipedia mentions, and blog mentions. PlumX maintains a database recording the uptake of scientific outputs beyond the scientific literature in, for example, social media, blogs, news, and educational resources.</li>
-        </ul>
-        <blockquote>
-        <p>Examples of public reports and publications for this indicator:</p>
-        <ul>
-        <li><a href="https://plumanalytics.com/learn/about-metrics/" target="_blank">About PlumX Metrics - Plum Analytics</a></li>
-        </ul>
-        </blockquote>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Neuroscience</strong></p>
+        </td>
+        <td width="24%">
+        <p>Life Sciences</p>
+        </td>
+        <td style="text-align: center;" width="24%">
+        <p><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Nursing</strong></p>
+        </td>
+        <td width="24%">
+        <p>Health Sciences</p>
+        </td>
+        <td style="text-align: center;" width="24%">
         <p>&nbsp;</p>
-        <h2><strong>Sustainable Development Goals (SDGs)</strong> indicators</h2>
-        <ul>
-        <li><strong>Share of publications thematically aligned with a certain SDG: </strong>The United Nations&rsquo; Sustainable Development Goals (SDGs) challenge the global community to build a world where no one is left behind. They are increasingly recognized as objectives against which to measure the societal outcomes of research efforts. Elsevier has built thematic data sets covering research related to each of the SDGs and can measure the shares of given publication sets that fall within each SDG. (Further details on the Elsevier 2023 mapping are available <a href="https://elsevier.digitalcommonsdata.com/datasets/y2zyy9vwzy/1" target="_blank">here</a>.)This measurement provides a sense of the probability to which a publication set could potentially be thematically related and useful to advancing an SDG.</li>
-        </ul>
-        <blockquote>
-        <p>Examples of public reports where this indicator has been used:</p>
-        <ul>
-        <li>2023: <a href="https://assets.ctfassets.net/zlnfaxb2lcqx/epSolmRHzr28rzUnxCl0a/04aa577cf83c02be0f9b814c7a53bfd0/G20-report-June-2023version-19th-July.pdf" target="_blank">Fostering collaboration: a study of scientific publications with authors in G20 countries</a></li>
-        <li>2022: <a href="https://assets.ctfassets.net/o78em1y1w4i4/05wiuBpm9GuVZtKsziNek/18dc8d45297ec132840fb3c9accf353e/wales-research-performance-with-uk-and-global-comparatorsASSOURCE.pdf" target="_blank">Wales SDG Report (elsevier.com)</a>:</li>
-        <li>2022: <a href="https://www.elsevier.com/connect/net-zero-report" target="_blank">Report: How can research help the world hit net zero by 2050? (elsevier.com)</a></li>
-        <li>2022: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275657" target="_blank">Sustainability through a gender lens: The extent to which research on UN Sustainable Development Goals includes sex and gender consideration (plos.org)</a></li>
-        </ul>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Pharmacology, Toxicology and Pharmaceutics</strong></p>
+        </td>
+        <td width="24%">
+        <p>Life Sciences</p>
+        </td>
+        <td style="text-align: center;" width="24%">
+        <p><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Physics and Astronomy</strong></p>
+        </td>
+        <td width="24%">
+        <p>Physical Sciences</p>
+        </td>
+        <td style="text-align: center;" width="24%">
+        <p><strong>X</strong></p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Psychology</strong></p>
+        </td>
+        <td width="24%">
+        <p>Social Sciences</p>
+        </td>
+        <td width="24%">
         <p>&nbsp;</p>
-        </blockquote>
-        <h2><strong>Authorship </strong>indicator and gender inference</h2>
-        <p><strong>Share of author count</strong> <strong>by gender</strong> is the share of authors who are women or men. To infer a gender from an author&rsquo;s name, Elsevier employs an approach that combines the use of existing and established name/gender lists and the use of NamSor, designed to determine the gender of names, taking into account different elements such as given name, surname, ethnicity and country. The indicator has known limitations for Asian names. In this dashboard we have limited the data to those countries with sufficient numbers of researchers, and a sufficient quality for inferred gender. For more details refer to the report.</p>
-        <p><strong>For a discussion of this approach and its limitations, </strong>see: 2018: <a href="http://www.science-metrix.com/sites/default/files/science-metrix/publications/science-metrix_bibliometric_indicators_womens_contribution_to_science_report.pdf" target="_blank">science-metrix_bibliometric_indicators_womens_contribution_to_science_report.pdf</a> (Science-Metrix.com)</p>
-        <p>Examples of public reports and publications for this indicator:</p>
-        <ul>
-        <li>2022: <a href="https://dl.acm.org/doi/pdf/10.1145/3531146.3533140" target="_blank">Imperfect Inferences: A Practical Assessment (acm.org)</a></li>
-        <li>2022: <a href="https://direct.mit.edu/qss/article/3/2/363/111199/Do-women-undertake-interdisciplinary-research-more" target="_blank">Do women undertake interdisciplinary research more than men, and do self-citations bias observed differences? | Quantitative Science Studies </a><a href="https://direct.mit.edu/qss/article/3/2/363/111199/Do-women-undertake-interdisciplinary-research-more" target="_blank">(</a><a href="https://direct.mit.edu/qss/article/3/2/363/111199/Do-women-undertake-interdisciplinary-research-more" target="_blank">edu)</a> &amp; <a href="https://www.timeshighereducation.com/campus/how-encourage-gender-equity-interdisciplinary-research" target="_blank">How </a><a href="https://www.timeshighereducation.com/campus/how-encourage-gender-equity-interdisciplinary-research" target="_blank">to encourage gender equity in interdisciplinary research (timeshighereducation.com)</a></li>
-        <li>2022: <a href="https://oecd.ai/en/data?selectedArea=ai-research&amp;selectedVisualization=number-of-research-publications-in-ai-by-gender" target="_blank">OECD dashboard on women in </a><a href="https://oecd.ai/en/data?selectedArea=ai-research&amp;selectedVisualization=number-of-research-publications-in-ai-by-gender" target="_blank">AI (OECD)</a></li>
-        <li>2021: <a href="https://www.elsevier.com/connect/elseviers-reports-on-gender-in-research" target="_blank">Elsevier's reports on gender in research (Elsevier.com)</a></li>
-        <li>2021: She <a href="https://ec.europa.eu/research-and-innovation/en/knowledge-publications-tools-and-data/interactive-reports/she-figures-2021" target="_blank">figures</a> (EC)</li>
-        </ul>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Social Sciences</strong></p>
+        </td>
+        <td width="24%">
+        <p>Social Sciences</p>
+        </td>
+        <td width="24%">
         <p>&nbsp;</p>
-        <h2>Subject areas and subfields included in the analysis:</h2>
-        <p>Titles in Scopus are classified under four broad subject clusters (life sciences, physical sciences, health sciences and social sciences &amp; humanities), which are further divided into 27 major subject areas (known as All Science Journal Classification or ASJC). Titles may belong to more than one subject area. Subject areas in this report are based on 26 subject areas, with titles classified as &ldquo;Multidisciplinary&rdquo; by ASJC reclassified for this report.</p>
-        <p><strong>To define subfields of research within medicine, we leveraged a system in which the major subfields of medicine are further classified into subcategories. </strong>Because there is considerable overlap in some subcategories, we defined medicine subfields by grouping the appropriate subcategories based on the frequency that publications were categorized in overlapping subcategories. For example, we created the subfield &ldquo;Fertility &amp; Birth&rdquo; because a high percentage of publications in the subcategory &ldquo;Obstetrics and Gynecology&rdquo; were also classified in the subcategory &ldquo;Reproductive Medicine&rdquo;. The final selection of research subfields in medicine is shown here.</p>
+        </td>
+        </tr>
+        <tr>
+        <td width="51%">
+        <p><strong>Veterinary</strong></p>
+        </td>
+        <td width="24%">
+        <p>Health Sciences</p>
+        </td>
+        <td width="24%">
+        <p>&nbsp;</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <p>&nbsp;</p>
+        <p>To define subfields of research within medicine, we leveraged a system in which the major subfields of medicine are further classified into subcategories. Because there is considerable overlap in some subcategories, we defined medicine subfields by grouping the appropriate subcategories based on the frequency that publications were categorized in overlapping subcategories. For example, we created the subfield &ldquo;Fertility &amp; Birth&rdquo; because a high percentage of publications in the subcategory &ldquo;Obstetrics and Gynecology&rdquo; were also classified in the subcategory &ldquo;Reproductive Medicine&rdquo;. The final selection of research subfields in medicine is shown here.</p>
         <table >
         <tbody>
         <tr>
         <td style="width: 227px;">
-        <p><strong>MEDICINE SUBFIELD NAME</strong></p>
+        <p><strong>Medicine Subfield Name</strong></p>
         </td>
         <td style="width: 374px;">
-        <p><strong>SUBCATEGORIES INCLUDED</strong></p>
+        <p><strong>Subcategories Included</strong></p>
         </td>
         </tr>
         <tr>
@@ -259,8 +457,214 @@
         </td>
         </tr>
         </tbody>
-        </table>
+        </table>        
         <p>&nbsp;</p>
-        <p><a href="#_ftnref1" name="_ftn1">[1]</a> https://www.inscits.org/disciplinary-diversity---theory-and-praxis</p>
+        <p>Furthermore, findings in Science, Technology, Engineering and Mathematics (STEM) research are also reported in this report. STEM was defined by grouping the ASJC 27 categories as identified in the table above.</p>
+        <p>In addition, Scopus content is also classified under the United Nations Sustainable Development Goals (SDGs). The SDGs challenge the global community to build a world where no one is left behind. Since 2018, Elsevier has generated SDG search queries to help researchers and institutions track and demonstrate progress toward the SDG targets. The 17 SDGs are:</p>
+        <ul>
+        <li>SDG 1 - No Poverty</li>
+        <li>SDG 2 - Zero Hunger</li>
+        <li>SDG 3 - Good Health and Well-Being</li>
+        <li>SDG 4 - Quality Education</li>
+        <li>SDG 5 - Gender Equality</li>
+        <li>SDG 6 - Clean Water and Sanitation</li>
+        <li>SDG 7 - Affordable and Clean Energy</li>
+        <li>SDG 8 - Decent Work and Economic Growth</li>
+        <li>SDG 9 - Industry, Innovation and Infrastructure</li>
+        <li>SDG 10 - Reduced Inequalities</li>
+        <li>SDG 11 - Sustainable Cities and Communities</li>
+        <li>SDG 12 - Responsible Consumption and Production</li>
+        <li>SDG 13 - Climate Action</li>
+        <li>SDG 14 - Life Below Water</li>
+        <li>SDG 15 - Life On Land</li>
+        <li>SDG 16 - Peace, Justice and Strong Institutions</li>
+        <li>SDG 17 - Partnerships for the Goals</li>
+        </ul>
+        <p>The analysis for this report are based on the Elsevier 2023 SDGs Mapping, which can be consulted at <a href="https://elsevier.digitalcommonsdata.com/datasets/y2zyy9vwzy/1" target="_blank">https://elsevier.digitalcommonsdata.com/datasets/y2zyy9vwzy/1</a>.</p>
+        <p>&nbsp;</p>
+        <h3>Author gender inference</h3>
+        <p>We used NamSor to infer the gender of authors. NamSor treats gender as a binary variable and is only able to infer gender as &ldquo;woman&rdquo; or &ldquo;man.&rdquo; We acknowledge that this poses a limitation to fully assessing gender inclusiveness. A binary gender was inferred for author IDs using the NamSor API (August 2023 release). The API provides a Gender Calibrated Probability and gender classification based on three data points: country of origin, first name and last name. We generated these three data points for authors based on information related to each author ID.</p>
+        <h3>Determination of author country of origin</h3>
+        <p>We determined each author&rsquo;s country of origin based on the country of affiliation listed on the publications from their first year of publication in Scopus (i.e., articles, reviews and conference papers). In some cases, authors had published in more than one country in their first year of publication. In these cases, we designated the country with the largest number of publications as the author&rsquo;s country of origin. Authors with equal numbers of publications in two or more countries were excluded from the gender disambiguation analysis. The process used to determine the author&rsquo;s country of origin is summarized here. For each author ID:</p>
+        <ul>
+        <li>Identify year of first publication in Scopus.</li>
+        <li>Identify all publications from the first year that the author published.</li>
+        <li>Identify the country affiliation indicated by the author in their first-year publications.</li>
+        <li>Tabulate the countries of affiliation.</li>
+        <li>Tabulate the number of times each country was listed as the country of affiliation in the first year of publication.</li>
+        <li>Assign the author ID to the country most often indicated as the country of affiliation in the first year of publication as the country of origin.</li>
+        <li>If two countries appeared as the country of affiliation for an author an equal number of times in the first year of publication, then that author was excluded from the analysis.</li>
+        </ul>
+        <h3>First name determination</h3>
+        <p>First and last name are required as input data for NamSor. Therefore, only author IDs with a first and last name were passed through the NamSor API to retrieve a Gender Probability Score. All author IDs for whom no first name data was available were not included in the analysis.</p>
+        <p>Different variants of an author&rsquo;s name are commonly observed across their publications. To identify the best first name to pass through NamSor for each author, we assessed all the name variants associated with each author ID. For each author ID in the Scopus snapshot, we examined all publications on which the author ID appears in the author field and generated a list of all distinct first names associated with the author ID. Based on this list, we generated a table with a revised first name for each author ID. The process used to determine the best first name to pass through NamSor is described here.</p>
+        <p>In cases where only a single first name was associated with an author ID:</p>
+        <ul>
+        <li>When the name was of zero length, the best first name was assigned as null (e.g., author first names: [ ], best first name: null)</li>
+        </ul>
+        <p>These author IDs were excluded from the analysis.</p>
+        <ul>
+        <li>When the name was not of zero length, we removed the following nonsensical characters if they were leading or trailing: &ldquo;-!#&amp;&rdquo; (e.g., author first names: [&ldquo;Tom&amp;&rdquo;], best first name: Tom)</li>
+        </ul>
+        <p>In cases where multiple first names were associated with an author ID, we selected the longest available name following removal of nonsensical characters, provided this name was not composed of a string of initials, according to the following steps for each author ID:</p>
+        <ul>
+        <li>Author first names were collected into a list.</li>
+        <li>Author first names were initialized as the empty string &lsquo; &rsquo;.</li>
+        <li>The list of names was looped through. Each name in the list was stripped of nonsensical leading and trailing characters (-!#&amp;).</li>
+        <li>The next name in the list was considered and subjected to the same treatment. If the length of the string was longer and not composed of a string of initials, this next name was then assigned as the revised first name. We identified a string of initials among author first names by comparing the number of periods that appear in the string to the number of characters (excluding whitespace, periods and nonsensical characters). When the number of periods was equal to the number of characters, this string was identified as a string of initials. This was done using Regex expressions.</li>
+        <li>This process was repeated until the end of the list of author first names is reached.
+        <ul>
+        <li>g., author first names: [&ldquo;Samantha&rdquo;, &ldquo;#Sam&rdquo;, &ldquo;Sam&rdquo;, &ldquo;S. E.&rdquo;], best first name: Samantha</li>
+        <li>g., author first names: [&ldquo;Samuel&rdquo;, &ldquo;#Sam&rdquo;, &ldquo;Sam&rdquo;, &ldquo;S. E.&rdquo;], best first name: Samuel</li>
+        </ul>
+        </li>
+        </ul>
+        <h3>Gender Probability Score</h3>
+        <p>The NamSor Gender Calibrated Probability was used to predict the gender of each author. The NamSor Probability is a value returned by NamSor along with the predicted gender for each name passed to the NamSor API. The Gender Probability is an assigned probability constructed by NamSor using several gold sets. The values for Gender and Gender Probability are the output we retrieve after passing the best first name, last name and country of origin data to their GenderGeoBatch API and the best first and last name data to their GenderBatch API.</p>
+        <p>Gender Probability ranges from 0.5 to 1.0. A score of 0.5 indicates high uncertainty that the inferred gender is correct and a score of 1.0 indicates the highest level of certainty that the inferred gender is correct. Guided by years of reporting with the Namsor inference, we use a cutoff Gender Probability of 0.85. All names that fall below that threshold are considered as gender unknown.</p>
+        <p>The gender inferred for each name-country combination returned by their GenderGeoBatch API was then matched to author IDs based on the best first name, last name and country of origin. The gender inferred for each name returned by their GenderBatch API is then matched based on first and last name.</p>
+        <p>Our preference was to use the returned value from GenderGeoBatch as it takes in three data points.&nbsp; However, should the Probability returned from GenderGeoBatch not meet the threshold of 0.85, we assess the gender and Probability returned by GenderBatch to see if the threshold of 0.85 is met there.&nbsp; This may happen if a particular name is extremely rare in the country with which it was submitted to GenderGeoBatch.</p>
+        <h3>Author publication history and career stages</h3>
+        <p>Author publication history was determined based on the year in which the author&rsquo;s first publication appeared in Scopus. Then, publication age of each publication was computed per author based on the year of the first publication and the year of each publication, and we then binned publications of authors into career stage groups as follows:</p>
+        <ul>
+        <li>[0-5 years] (Early-career stage)</li>
+        <li>[6-10 years] (Early-career stage)</li>
+        <li>[11-15 years] (Mid-career stage)</li>
+        <li>[16-20 years] (Mid-career stage)</li>
+        <li>[21+ years] (Advanced-career stage)</li>
+        </ul>
+        <p>These categories made it possible to report on career stages over the years, accounting for changes in career stages as authors progress through careers. To assign an author to a career stage for a 5-year period, two publications during the corresponding career stage was used as a minimum threshold for inclusion.</p>
+        <h3>Average number of publications</h3>
+        <p>The average number of publications by men and women was calculated as the arithmetic mean of the number of publications by each active author during the period of interest and within a given group (based on gender, country and subject area). For example, the average number of publications authored by women who were active authors in Argentina in Physical Sciences during the period 2014&ndash;2018 was 5.3 publications. This value is the arithmetic mean of the publication count of the 5,449 women who were active authors in Physical Sciences in Argentina during the period 2018&ndash;2022. Author assignation to a country, subject area and period was determined as described in the section &ldquo;Author country and subject area assignation.&rdquo; All publications by an author, once assigned to a country, subject area and period, contributed to that author&rsquo;s publication count. Publications were counted using whole counting rather than fractional counting. For example, a publication listing five authors in the author byline counted as a single publication towards the publication count of each author, rather than contributing 0.2 publications towards each author&rsquo;s publication count.</p>
+        <h3>Authorship analysis</h3>
+        <p>Most of the analyses in this report are based on the arithmetic mean of average scores of authors. However, one analysis comparing shares of active authors with shares of authorship instead relies on fractional shares of publications. In that case, each author in a publication is given a fraction of the publication, based on the number of authors. For instance, each author in a publication with a total of 5 authors will receive 0.2 publications. That fraction is further divided if an author is linked to more than one address on the publication, to ensure that summing across countries on a publication adds up to 1 publication.</p>
+        <p>The share of authorship among men and women in a country and subject area was then calculated by taking the sum of fractionalized publications for authors in the group, and dividing by the total fractional count across both genders to obtain shares of authorship.</p>
+        <h3>Average field-weighted citation impact (FWCI)</h3>
+        <p>Field-weighted citation impact (FWCI) is an indicator of the academic impact or reach of a publication. It is calculated by comparing the number of citations actually received by a publication with the number of citations expected for a publication of the same type, publication year and subject area. An FWCI of more than 1.0 indicates that the publication has been cited more than would be expected based on the global average for similar publications. For example, an FWCI of 2.1 means that the publication has been cited 110% more than the world average for similar publications. An FWCI of less than 1.0 indicates that the publication has been cited less than would be expected based on the global average for similar publications. For example, an FWCI of 0.9 means that the publication has been cited 10% less than the world average for similar publications.</p>
+        <p>In general, the FWCI is defined as:</p>
+        <p>FWCI =&nbsp;C<sub>i</sub>&nbsp;/&nbsp;E<sub>i</sub>&nbsp;</p>
+        <p>With</p>
+        <p>C<sub>i</sub> = citations received by publication i</p>
+        <p>E<sub>i</sub> = expected number of citations received by all similar publications in the publication year plus the following three years</p>
+        <p>When a publication was allocated to more than one subject area, the harmonic mean was used to calculate FWCI.</p>
+        <p>To calculate the average FWCI among men and women, we first calculated the arithmetic mean FWCI for each author based on their publications during the period of interest. This was done using full counting. For a publication with N authors, each author on that publication full credit for each publication. In order to calculate an author&rsquo;s FWCI over their body of work, the author&rsquo;s average FWCI for all publication computed.</p>
+        <p>The average FWCI among men and women in a country and subject area was calculated by taking the arithmetic mean of the FWCI for authors in the group.</p>
+        <h3>Open access</h3>
+        <p>Open access (OA) analyses were prepared using data from Unpaywall, which assigns a preferred open access status to publications based on the best open access location of documents available in their data. A single OA status is assigned to a publication:</p>
+        <ul>
+        <li>Gold open access: Publication made available by the publisher, in a fully open access journal</li>
+        <li>Green open access: Publication made available in an online repository</li>
+        <li>Hybrid open access: Publication made available by the publisher, in a hybrid journal with an open access license</li>
+        <li>Bronze open access: Publication made available by the publisher, in a non-open access journal and without an open access license</li>
+        </ul>
+        <p>More information about Unpaywall open access statuses can be consulted online at <a href="https://support.unpaywall.org/support/solutions/articles/44001777288-what-do-the-types-of-oa-status-green-gold-hybrid-and-bronze-mean-" target="_blank">https://support.unpaywall.org/support/solutions/articles/44001777288-what-do-the-types-of-oa-status-green-gold-hybrid-and-bronze-mean-</a>.</p>
+        <p>To determine the open access status of Scopus publications, Unpaywall data are linked to Scopus based on Digital Object Identifiers (DOI). Publications in Scopus without DOIs are excluded from the open access analysis.</p>
+        <p>To calculate the average share in open access among men and women, we first calculated the share of open access (per OA status) for each author based on publications during the period of interest. This was done using full counting. The average share among men and women in a country and subject area was calculated by taking the arithmetic mean of the share for authors in the group.</p>
+        <h3>Interdisciplinarity</h3>
+        <p>The disciplinary diversity of references (DDR) of a publication is computed based on the material cited by the publication and reflects the diversity of knowledge that is being integrated into the publication. The indicator considers (a) the number of different subfields that are being cited, (b) the distribution of those citations across the cited subfields, and (c) the intellectual proximity of those subfields to one another. For example, a paper that draws on knowledge from four different subfields would have a higher DDR score than a paper that draws on only three. Similarly, a paper that cites one subfield 90% of the time and the other subfields only 10% of the time would have a lower score than a paper that cites its various subfields in roughly equal measure. Finally, a paper that integrates knowledge from biology and from chemistry would have a lower score than a paper that integrates knowledge from biology and the performing arts, because the former pair is more intellectually proximate than the latter pair. Each paper&rsquo;s DDR score is adjusted to the average of all papers worldwide published in the same subfield and same year.</p>
+        <p>In this report, the share of author&rsquo;s papers among the top 10% with the highest DDR in the world were computed.</p>
+        <p>To calculate the interdisciplinarity score, the share of publications among the top 10% with the highest DDR in the world were measured among men and women first for each author based on their publications during the period of interest. This was done using full counting.</p>
+        <p>The average share among men and women in a country and subject area was then calculated by taking the arithmetic mean of the share for authors in the group.</p>
+        <h3>Multidisciplinarity</h3>
+        <p>The disciplinary diversity of authors (DDA) reflects the diversity of the prior disciplinary backgrounds of a paper&rsquo;s co-authors. This indicator was developed to account for the number of distinct disciplines, the cognitive distance that separates them, and the balance between them. A paper co-authored by authors whose previous papers were distributed across subfields of science in a similar pattern (i.e., having similar relative frequency across subfields) would score lower than papers bringing together authors with different backgrounds (as measured by the subfields from their prior publications), even if those authors, individually, have published in a less diverse set of subfields. In other words, it is having differences between the backgrounds of each co-author that increases multi-disciplinary integration and not having individual authors with more diverse backgrounds. Nevertheless, authors having diverse backgrounds may be more likely to increase the multi-disciplinary integration of one paper, but only if this diversity is sufficiently different from the subfields of the remaining authors. As a result of this approach, a single-author publication, no matter the diversity of its author&rsquo;s background, will always receive the minimum score, because the indicator is intended to capture diversity across different authors. Similar to the DDR, the share of an entity&rsquo;s papers with a DDA score in the top 10% will be measured and normalized to the average of all papers worldwide published in the same subfield and same year.</p>
+        <p>To calculate the multidisciplinarity score, the share of publications among the top 10% with the highest DDA in the world were measured among men and women first for each author based on their publications during the period of interest. This was done using full counting.</p>
+        <p>The average share among men and women in a country and subject area was then calculated by taking the arithmetic mean of the share for authors in the group.</p>
+        <h3>Patent citations</h3>
+        <p>Patent citations were measured using a linking of the reference lists of non-patent literature cited in patents to Scopus. A mapping to Scopus of non-patent literature cited in LexisNexis content is maintained by Elsevier&rsquo;s Analytical Services and returns close to 95% of all valid citations to Scopus, with a precision above 99%. For this analysis, patent applications filed at the United States Patent and Trademark Office (USPTO), the European Patent Office (EPO), the Intellectual Property Office (IPO) of the United Kingdom and the Japan Patent Office (JPO), and through the World Intellectual Property Organization (WIPO) were considered.</p>
+        <p>To calculate the patent citation score, the share of publications cited at least once in patents was measured among men and women first for each author based on their publications during the period of interest. This was done using full counting.</p>
+        <p>The average share among men and women in a country and subject area was then calculated by taking the arithmetic mean of the share for authors in the group. Because patent citations take time to accrue, the share of publications cited in patents decreases as we get closer to the present time. To ease interpretation of the data, the shares were thus normalized annually against the average share at the world level for men and women combined, bringing the world level to 1.00. A score above 1.00 indicates more patent citations than expected in a given year, while a score below 1.00 indicates fewer patent citations than expected.</p>
+        <h3>Citations in policy documents</h3>
+        <p>Citation in policy documents were measured data from the Overton database.<a href="#_ftn1" name="_ftnref1">[1]</a> Overton is the world&rsquo;s largest searchable index of policy documents, guidelines, think-tank publications and working papers. Its database consists of more than 1.65 million policy documents, with data collected from 182 countries and over a thousand sources worldwide. These policy documents include white papers from international multilateral organizations, as well as guidelines from city councils, parliamentary transcripts and other classes of the so-called &ldquo;gray literature.&rdquo; Around half of these documents make citations to academic or scholarly publications. More than 2 million distinct journal-based publications are cited by at least one policy document in the database.</p>
+        <p>Elsevier uses Overton for tracking research uptake in policy. A qualitative assessment of these citations by Elsevier&rsquo;s Science-Metrix team revealed that while they &ldquo;should not be interpreted as indicative of advanced policy outcomes of research directly reaching the legislative or executive processes, they can be seen as achievements in contributing to the first stages of these processes, at the intersection between governance and academia.&rdquo;<a href="#_ftn2" name="_ftnref2">[2]</a></p>
+        <p>One known limitation of the Overton database is that it displays a bias towards English-language documents originating in Anglo-Saxon countries. While the impact on the analysis for this report is expected to be limited as analyses mostly focus on comparison between women and men, often within the context of the same country, caution is advised when attempting cross-country comparisons for non-English speaking nations.</p>
+        <p>To determine the policy citation status of Scopus publications, Overton data are linked to Scopus based on Digital Object Identifiers (DOI). Publications in Scopus without DOIs are excluded from the open access analysis.</p>
+        <p>To calculate the policy citation score, the share of publications cited at least once in policy documents was measured among men and women first for each author based on their publications during the period of interest. This was done using full counting.</p>
+        <p>The average share among men and women in a country and subject area was then calculated by taking the arithmetic mean of the share for authors in the group. Because policy citations take time to accrue, the share of publications cited in policy documents decreases as we get closer to present time. To ease interpretation of the data, the shares were thus normalized annually against the average share at the world level for men and women combined, bringing the world level at 1.00. A score above 1.00 indicates more patent citations than expected in a given year, while a score below 1.00 indicates fewer citations than expected.</p>
+        <h3>Alternative metrics</h3>
+        <p>Alternative metrics assess the uptake of scientific literature by popular culture, such as news and online content. Alternative metrics are measured by linking records in Scopus to PlumX, the data source of journalistic and trade news documents, Wikipedia mentions, and blog mentions. PlumX maintains a database recording the uptake of scientific outputs beyond the scientific literature in, for example, social media, blogs, news, and educational resources.</p>
+        <p>For this report, mentions in three media were retained: mentions in news, blogs and Wikipedia.</p>
+        <p>To determine the status of mentions in these three media of Scopus publications, PlumX data are linked to Scopus based on Digital Object Identifiers (DOI). Publications in Scopus without DOIs are excluded from these analyses.</p>
+        <p>To calculate each of these alternative metrics, a paper-level score is first measured. Because mentions in these platforms are relatively rare, a binary status acts as the score instead of the count of mentions, in an attempt to diminish the effect of outliers. Thus, each publication is either given a score of 1 if cited in a given platform, and 0 if not. Then, the world average per subfield, year and document type is computed, and the difference between the observed value and the world average is computed, resulting in a difference score. &nbsp;&nbsp;</p>
+        <p>The alternative metric score for each platform was then measured among men and women for each author based on their publications during the period of interest, taking the average of the difference scores. This was done using full counting.</p>
+        <p>The alternative metric scores for news, blogs and Wikipedia among men and women in a country and subject area was then calculated by taking the arithmetic mean of the share for authors in the group.</p>
+        <h3>Mentorship</h3>
+        <h4>Tree algorithm</h4>
+        <p>Before computing the tree index of a mentor, the tree algorithm uncovers mentor&minus;mentee links based on the publication records of authors in Scopus. The steps of the tree algorithm can be summarized as follows:</p>
+        <ul>
+        <li>It first identifies senior researchers as those who still publish 10 years after their first original publication indexed in the Scopus database.</li>
+        <li>For each researcher (potential mentee) appearing in Scopus, the tree algorithm then identifies a mentor based on the output of the researcher within the first 5 years of the researcher&rsquo;s publishing career. The senior researcher assigned to the researcher as a mentor is the senior with whom the researcher co-published the largest number of publications during that period. To be assigned to a mentor, mentees must have co-published at least 2 publications with the senior. As such, some researchers may not be assigned a mentor. Also, in case of ties, mentees can be assigned to more than one senior.</li>
+        <li>Additionally, only those mentees who went on to publish at least two publications independently from their mentor(s) are retained by the tree algorithm effectively limiting the mentorship tree of a mentor to those mentees who had some success in a subsequent publishing career.</li>
+        </ul>
+        <h4>Tree index</h4>
+        <p>For each mentor-mentee pair, the following three metrics are first computed:</p>
+        <ul>
+        <li>Number of publications by the mentee that are not co-published with the mentor;</li>
+        <li>FWCI of the publications by the mentee that are not co-published with the mentor; and</li>
+        <li>Number of distinct co-authors of the mentee that are not also co-authors of the mentors.</li>
+        </ul>
+        <p>These metrics aim at measuring the scientific contribution of a mentee, without a direct contribution from the mentor. Each metric is standardized accounting for the field and career age of the senior (inferred from the publication record in Scopus). The three standardized scores are then summed to obtain the contribution of the mentee to the mentor&rsquo;s tree index. The individual contributions of each mentee linked to a given mentor are then summed to obtain the mentor&rsquo;s tree index. To further account for variation in the number of mentees associated with a mentor across disciplines and at different time points of a research career, the resulting tree index is once more normalized by field and career age of the senior. The average tree index of all mentors in a given field and starting year of a publishing career therefore stands at 1.00. Mentors scoring above 1.00 contributed to developing more mentees and/or mentees who ended up with stronger independent performance later in their career.</p>
+        <h4>Limitations</h4>
+        <p>In testing the tree algorithm, 26% (from 3% to 44% across disciplines) of student&ndash;supervisor pairs in EThOS were matched to Scopus (38,453 out of 147,310). This could be due to several reasons, such as not all students having co-published at least two Scopus-indexed publications with their supervisor(s) within the first five years of their publishing career. As the prevalence of such reasons can vary across disciplines (e.g., Scopus has better coverage of some disciplines), the tree algorithm and tree index generally offer better coverage of student&ndash;supervisor pairs in STEM compared to SSH disciplines (especially in the humanities). While the impact of such differences on the tree index are minimized through field normalization, care should be taken in interpreting results in underrepresented disciplines. In this chapter, research fields with too few observations (i.e., fewer than 10 mentees by country within one of the following mentor&minus;mentee categories: women&minus;women, women&minus;men, men&minus;women, men&minus;men) were excluded from the analysis by discipline. The consistency of observed patterns across countries and research fields suggests the coverage offered by the tree algorithm and tree index is sufficient to obtain reliable and meaningful information as regards to the importance of gender role model in research mentorship network</p>
+        <h3>Gender representation and team science</h3>
+        <p>Publications in Cancer Research, Agriculture, and Quantum Technology were selected based on relevant keywords found among their titles, abstracts and author&rsquo;s keywords. Publications were limited to those from 2001 to 2018, and articles, conference papers, reviews and short surveys appearing in book series or journals, and articles, reviews and conference papers from conference proceedings.</p>
+        <p>Thereafter, publications were linked to two other data sources cataloging patents (PATSTAT) and the policy-related literature (Overton). These links were established based on patents or policies that cited scientific publications and resulted in two distinct indicators of whether a scientific publication was cited by (1) patents and by (2) policy-related documents. The gender of co-authors in publications were inferred based on the NamSor API which links names to probabilities of the name to belong to either a man or a woman.</p>
+        <p>Employing a multivariate model relying on logistic regression, other characteristics of scientific publications such as career stage of the authors, cross-disciplinarity levels, type of publications, year, team size and sector of co-authors (academic or private) were accounted for. In doing so, the association between the presence of women in research teams (main explanatory variable) and the probability of a research paper being cited by patents or by the policy-related literature (explained variables) was assessed.</p>
+        <h2>Analysis of funding data</h2>
+        <h3>Data source</h3>
+        <p>The funding data used for the analyses in this report were based on a snapshot of the Elsevier&rsquo;s funding database, taken January 26, 2024.</p>
+        <h3>Awards included in the analysis</h3>
+        <p>Awards were attributed to the measured period according to their start year (for instance an award with a start date in 2020 is included under periods 2016&ndash;2020, 2017&ndash;2021 and 2018&ndash;2022). All awards available in the data were included for the analysis.</p>
+        <h3>Awardees included in the analysis</h3>
+        <p>Awardees included in the report were limited to those for whom a Scopus author ID was available and whom were deemed active (as per the &ldquo;Identification of active authors&rdquo; section), &nbsp;and for which the associated Scopus author ID data (first name, last name and country of origin) could support gender inference (as described in the section &ldquo;Analysis of Bibliometric Data&rdquo;). Awardee names in the Elsevier&rsquo;s funding database were matched to Scopus author IDs based on awardee name and institution details.</p>
+        <h3>Funding agencies included in the analysis</h3>
+        <p>All agencies indexed in the Elsevier funding database that granted a research award with a start date during the time period 2009&ndash;2022 to an individual with an author ID were included in the analysis and contributed to the country-level statistics.</p>
+        <h3>Awardee country assignation</h3>
+        <p>We assigned awardees to countries based on the country where the funding agency awarding the grant is located. Awardees who received grants from more than one funding agency based in more than one country thus counted towards more than one country or region.</p>
+        <h3>Selection of countries to include in the analysis</h3>
+        <p>Awardees were aggregated at the country level based on the country of the awarding funding agency. Therefore, awardees were assigned to a country based on the location of the funding agency. To ensure we were working with a robust data set, we limited the analyses to those countries selected for the bibliometric analysis with at least 1,000 awardees (enumerated based on the description in the section &ldquo;Awardees included in the analysis&rdquo;) during the period 2018&ndash;2022.</p>
+        <h3>Awardee gender inference</h3>
+        <p>Awardees were matched to their Scopus author ID and gender was inferred as described in the section &ldquo;Author gender inference.&rdquo;</p>
+        <h3>Average number of awards</h3>
+        <p>The average number of awards granted to men and women was calculated as the arithmetic mean of the number of awards received by each awardee during the period of interest and within a given group (based on inferred gender and assigned country). Awards were counted using whole counting rather than fractional counting. For example, an award listing four awardees as recipients counted as a single award towards the award count of each awardee, rather than contributing 0.25 awards towards each awardee&rsquo;s award count.</p>
+        <h2>Analysis of patent data</h2>
+        <h3>Data source</h3>
+        <p>Patent data were based on patent data from LexisNexis, covering three patent authorities: the United States Patent and Trademark Office (USPTO), the European Patent Office (EPO) and the World Intellectual Property Office (WIPO). Published patent applications were selected as the main unit of measurement for the analyses.</p>
+        <p>While LexisNexis provides data for more than 100 patent authorities, known limitations in terms of country information of inventors make it difficult to properly report findings at national levels using most authorities. For the IP5 offices (the 5 offices covering the largest markets), only data from the USPTO and EPO are sufficiently complete for use in the context of this report, resulting in data for the China National Intellectual Property Administration (CNIPA), the Japan Patent Office (JIPO) and the Korean Patent Office (KIPO) being left out of the analysis. To broaden the reach of the analysis, data from WIPO have been included for this edition, providing a more international view to inventorship.</p>
+        <h3>Inventor definition and disambiguation</h3>
+        <p>Data analyses were based on team composition on patent applications, as defined by names of inventors on the patent (those who contribute to the claims of a patentable invention).</p>
+        <p>The decision to use team composition instead of disambiguated inventors came from the absence of a robust unique identifier for inventors in the data source. To circumvent the issue, each patent was instead tagged as one of the six following categories:</p>
+        <ul>
+        <li>Application with a single woman as inventor (woman-only)</li>
+        <li>Application with only two or more women as inventors (women-only)</li>
+        <li>Application with women as at least 60% of all inventors (women majority)</li>
+        <li>Mixed teams with both women and men, and no gender accounting for at least 60% of all inventors (mixed team)</li>
+        <li>Application with men as at least 60% of all inventors (men majority)</li>
+        <li>Application with only two or more men as inventors (men-only)</li>
+        <li>Application with a single man as inventor (man-only)</li>
+        <li>Application with unknown status</li>
+        </ul>
+        <p>These categories are mutually exclusive, and thus country level metrics for each one of these categories add up to 100%. The unknown status is used in cases where there is at least one inventor for whom the gender cannot be inferred and where the team composition status cannot be determined because of this. One unknown case excludes &ldquo;woman-only&rdquo;, &ldquo;women-only&rdquo;, &ldquo;men only&rdquo;, &ldquo;man-only&rdquo; as a valid choice, but depending on the number of inventors, the remaining three categories can still be inferred in some cases where the 60% threshold is attained regardless of the unknown cases. For cases for which it is not possible to assign one of the remaining three categories given the balance of men and women, the unknown status applies.</p>
+        <p>The share of patent applications per team composition status FWCI in a country and subject area was calculated by taking the count of patents for each status, divided by the total number of patents excluding the counts for the unknown category.</p>
+        <h3>Country assignation</h3>
+        <p>Inventors were assigned to the country indicated on the address linked to the inventors in the patent.</p>
+        <h3>Selection of countries to include in the analysis</h3>
+        <p>Countries includes in the patent analysis are the same as those selected for the bibliometric analysis.</p>
+        <h3>Inventor gender inference</h3>
+        <p>As described in the section &ldquo;Author gender inference,&rdquo; a binary gender was inferred for inventors on each of the patent applications using the NamSor API.</p>
+        <h3>Subject areas and subfields included in the analysis</h3>
+        <p>Patents are classified into multiple International Patent Classification (IPC) codes, which provide a system of symbols to classify patents according to technologies. The patent analysis was performed for the eight main sections of the IPC system, including under these any patent with at least one IPC code starting with the letter associated to each section. The sections are:</p>
+        <ul>
+        <li>A: Human Necessities</li>
+        <li>B: Performing Operations; Transporting</li>
+        <li>C: Chemistry; Metallurgy</li>
+        <li>D: Textiles; Paper</li>
+        <li>E: Fixed Constructions</li>
+        <li>F: Mechanical Engineering; Lighting; Heating; Weapons; Blasting</li>
+        <li>G: Physics</li>
+        <li>H: Electricity</li>
+        </ul>
+        <p>This classification enabled the investigation of patterns in team composition on patents across technology areas.</p>
+        <p><a href="#_ftnref1" name="_ftn1">[1]</a> https://www.overton.io/</p>
+        <p><a href="#_ftnref2" name="_ftn2">[2]</a> Pinheiro, H., Vignola-Gagn&eacute;, E. and Campbell D. (2021). A large-scale validation of the relationship between cross-disciplinary research and its uptake in policy-related documents, using the novel Overton altmetrics database. Quantitative Science Studies, 2(2): 616-642.</p>
     </body>
 </html>
